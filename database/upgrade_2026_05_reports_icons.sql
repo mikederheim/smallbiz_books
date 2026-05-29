@@ -1,0 +1,2 @@
+-- No database changes are required for this update.
+-- This file is included so you can keep an upgrade log with the application.

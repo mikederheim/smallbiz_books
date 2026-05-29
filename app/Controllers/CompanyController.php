@@ -1,0 +1,7 @@
+<?php
+class CompanyController extends Controller {
+ public function index(): void { $companies=$this->db->query('SELECT * FROM companies ORDER BY name')->fetchAll(); $this->render('companies/index', compact('companies')); }
+ public function save(): void { check_csrf(); $stmt=$this->db->prepare('INSERT INTO companies(name, legal_name, tax_id, address) VALUES(?,?,?,?)'); $stmt->execute([$_POST['name'],$_POST['legal_name']??'',$_POST['tax_id']??'',$_POST['address']??'']); $_SESSION['company_id']=$this->db->lastInsertId(); $this->seedAccounts((int)$_SESSION['company_id']); $this->redirect('dashboard'); }
+ public function select(): void { $_SESSION['company_id']=(int)$_GET['id']; $this->redirect('dashboard'); }
+ private function seedAccounts(int $cid): void { $accounts=[['1000','Checking','asset'],['1100','Accounts Receivable','asset'],['1200','Inventory','asset'],['2000','Accounts Payable','liability'],['2100','Sales Tax Payable','liability'],['3000','Owner Equity','equity'],['4000','Sales Revenue','income'],['4100','Service Revenue','income'],['5000','Cost of Goods Sold','expense'],['6000','Advertising','expense'],['6100','Supplies','expense'],['6200','Utilities','expense'],['6300','Rent','expense'],['6900','Misc Expense','expense']]; $stmt=$this->db->prepare('INSERT INTO accounts(company_id, code, name, type) VALUES(?,?,?,?)'); foreach($accounts as $a) $stmt->execute([$cid,$a[0],$a[1],$a[2]]); }
+}

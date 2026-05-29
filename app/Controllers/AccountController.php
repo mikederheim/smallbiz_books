@@ -1,0 +1,2 @@
+<?php
+class AccountController extends Controller { public function index(): void { $cid=$this->companyId(); $stmt=$this->db->prepare('SELECT * FROM accounts WHERE company_id=? ORDER BY code'); $stmt->execute([$cid]); $accounts=$stmt->fetchAll(); $this->render('accounts/index', compact('accounts')); } public function save(): void { check_csrf(); $cid=$this->companyId(); $stmt=$this->db->prepare('INSERT INTO accounts(company_id, code, name, type) VALUES(?,?,?,?)'); $stmt->execute([$cid,$_POST['code'],$_POST['name'],$_POST['type']]); $this->redirect('accounts'); }}
