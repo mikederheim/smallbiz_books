@@ -1,6 +1,11 @@
 <?php
 class Auth {
     public static function user(): ?array { return $_SESSION['user'] ?? null; }
+    public static function hasUsers(): bool {
+        $stmt = Database::get()->query('SELECT COUNT(*) AS c FROM users');
+        $row = $stmt->fetch();
+        return ((int)($row['c'] ?? 0)) > 0;
+    }
     public static function check(): bool { return isset($_SESSION['user']); }
     public static function requireLogin(): void { if (!self::check()) { header('Location: index.php?r=login'); exit; } }
     public static function login(string $email, string $password): bool {

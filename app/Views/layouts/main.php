@@ -28,7 +28,8 @@
       <a href="<?=route('reports_bs')?>"><span class="mdi mdi-scale-balance icon-purple"></span> Balance Sheet</a>
       <a href="<?=route('reports_customer')?>"><span class="mdi mdi-account-cash icon-blue"></span> Customers</a>
       <a href="<?=route('reports_vendor')?>"><span class="mdi mdi-cart icon-orange"></span> Vendors</a>
-      <div class="nav-section"></div>
+      <div class="nav-section">Admin</div>
+      <a href="<?=route('register')?>"><span class="mdi mdi-account-plus icon-blue"></span> Add User</a>
       <a href="<?=route('logout')?>"><span class="mdi mdi-logout icon-red"></span> Logout</a>
     </nav>
   </aside>

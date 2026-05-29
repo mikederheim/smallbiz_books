@@ -1,16 +1,19 @@
-SmallBiz Books update: invoice payment lock
-
-What this fixes:
-- Once a payment is recorded against an invoice, the invoice can no longer be edited.
-- Once a payment is recorded, the invoice payment form is hidden and duplicate payments are blocked server-side.
-- Deleting an invoice still deletes the invoice, its payment records, and related ledger postings.
-
-Install:
-1. Back up your current smallbiz_books folder and MySQL database.
-2. Copy the app folder in this update over your existing app folder.
-3. No MySQL changes are required. The SQL file is included only as a note.
+SmallBiz Books update: login-required user creation
 
 Changed files:
-- app/Controllers/InvoiceController.php
-- app/Views/invoices/index.php
-- database/upgrade_2026_05_invoice_payment_lock.sql
+- app/Core/Auth.php
+- app/Controllers/AuthController.php
+- app/Views/layouts/register.php
+- app/Views/layouts/main.php
+- public/index.php
+
+Install:
+1. Back up your files and database.
+2. Copy the changed files into your existing smallbiz_books install, preserving paths.
+3. No MySQL changes are required.
+
+Behavior change:
+- /public/index.php?r=register is public only when there are zero users in the database.
+- After the first user exists, only logged-in users can access the create-user screen.
+- Logged-in users can create additional users from the new Add User link in the sidebar.
+- Creating an additional user does not log you out or switch you into that new user.

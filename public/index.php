@@ -7,8 +7,14 @@ require __DIR__ . '/../app/Core/Controller.php';
 require __DIR__ . '/../app/Core/Ledger.php';
 
 $route = $_GET['r'] ?? 'dashboard';
-$publicRoutes = ['login','register'];
-if (!in_array($route, $publicRoutes, true)) Auth::requireLogin();
+$publicRoutes = ['login'];
+if ($route === 'register') {
+    // Allow public registration only for the very first user.
+    // After that, creating additional users requires an active login.
+    if (Auth::hasUsers()) Auth::requireLogin();
+} elseif (!in_array($route, $publicRoutes, true)) {
+    Auth::requireLogin();
+}
 
 $map = [
  'login'=>['AuthController','login'], 'logout'=>['AuthController','logout'], 'register'=>['AuthController','register'],

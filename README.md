@@ -76,3 +76,8 @@ Replace the PHP/CSS files with this package. The original schema already contain
 `database/upgrade_2026_05_transactions_reports.sql`
 
 Back up your database before running any upgrade SQL. If an index already exists, your MySQL version may report a duplicate-index warning/error; that is generally safe to ignore.
+
+
+## 2026-05 login-required user creation update
+
+Registration is public only when there are no users in the database. After the first user exists, a logged-in user must create any additional users from the Add User link in the sidebar.
