@@ -1,19 +1,18 @@
-SmallBiz Books update: login-required user creation
+SmallBiz Books Update: User Management
 
-Changed files:
-- app/Core/Auth.php
-- app/Controllers/AuthController.php
-- app/Views/layouts/register.php
-- app/Views/layouts/main.php
-- public/index.php
+This is a changed-files-only update.
 
-Install:
-1. Back up your files and database.
-2. Copy the changed files into your existing smallbiz_books install, preserving paths.
+Install steps:
+1. Back up your current smallbiz_books folder and database.
+2. Copy the contents of this update folder over your existing smallbiz_books installation, preserving the same folder structure.
 3. No MySQL changes are required.
+4. Log in and use Admin > Users in the left sidebar.
 
-Behavior change:
-- /public/index.php?r=register is public only when there are zero users in the database.
-- After the first user exists, only logged-in users can access the create-user screen.
-- Logged-in users can create additional users from the new Add User link in the sidebar.
-- Creating an additional user does not log you out or switch you into that new user.
+What changed:
+- The sidebar item is now "Users" instead of "Add User".
+- Users screen lists existing users.
+- You can add, edit, and remove users.
+- Passwords remain hashed using PHP password_hash().
+- Editing a user can leave the password blank to keep the current password.
+- Safety rules prevent deleting the only user account or the account you are currently logged in as.
+- Public registration remains available only when no users exist yet, for first-time setup.

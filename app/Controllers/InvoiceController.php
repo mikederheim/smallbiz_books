@@ -1,6 +1,16 @@
 <?php
 class InvoiceController extends Controller {
  public function index(): void { $cid=$this->companyId(); $s=$this->db->prepare('SELECT i.*, c.name customer_name, COALESCE(p.paid_amount,0) paid_amount, COALESCE(p.payment_count,0) payment_count FROM invoices i JOIN customers c ON c.id=i.customer_id LEFT JOIN (SELECT invoice_id, company_id, SUM(amount) paid_amount, COUNT(*) payment_count FROM payments GROUP BY invoice_id, company_id) p ON p.invoice_id=i.id AND p.company_id=i.company_id WHERE i.company_id=? ORDER BY i.invoice_date DESC'); $s->execute([$cid]); $invoices=$s->fetchAll(); $this->render('invoices/index', compact('invoices')); }
+ public function printable(): void {
+  $cid=$this->companyId();
+  $id=(int)($_GET['id']??0);
+  $stmt=$this->db->prepare('SELECT i.*, c.name customer_name, c.email customer_email, c.phone customer_phone, c.address customer_address, COALESCE(p.paid_amount,0) paid_amount FROM invoices i JOIN customers c ON c.id=i.customer_id LEFT JOIN (SELECT invoice_id, company_id, SUM(amount) paid_amount FROM payments GROUP BY invoice_id, company_id) p ON p.invoice_id=i.id AND p.company_id=i.company_id WHERE i.id=? AND i.company_id=?');
+  $stmt->execute([$id,$cid]);
+  $invoice=$stmt->fetch();
+  if(!$invoice) die('Invoice not found');
+  $balance=(float)$invoice['total']-(float)($invoice['paid_amount']??0);
+  $this->render('invoices/print', compact('invoice','balance'));
+ }
  public function create(): void { $cid=$this->companyId(); $customers=$this->list('customers',$cid); $income=$this->accounts($cid,'income'); $invoice=null; $this->render('invoices/form', compact('customers','income','invoice')); }
  public function edit(): void { $cid=$this->companyId(); $invoice=$this->load((int)($_GET['id']??0)); if($this->hasPayments($cid,(int)$invoice['id'])) die('This invoice already has a payment recorded, so it cannot be edited. Delete the invoice if you need to remove both the invoice and its payment.'); $customers=$this->list('customers',$cid); $income=$this->accounts($cid,'income'); $incomeAccountId=$this->sourceAccountId($cid,'invoice',(int)$invoice['id'],'credit'); $this->render('invoices/form', compact('customers','income','invoice','incomeAccountId')); }
  public function save(): void { $this->persist(false); }

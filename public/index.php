@@ -18,11 +18,12 @@ if ($route === 'register') {
 
 $map = [
  'login'=>['AuthController','login'], 'logout'=>['AuthController','logout'], 'register'=>['AuthController','register'],
+ 'users'=>['AuthController','users'], 'user_new'=>['AuthController','createUser'], 'user_save'=>['AuthController','saveUser'], 'user_edit'=>['AuthController','editUser'], 'user_update'=>['AuthController','updateUser'], 'user_delete'=>['AuthController','deleteUser'],
  'dashboard'=>['DashboardController','index'], 'companies'=>['CompanyController','index'], 'company_save'=>['CompanyController','save'], 'company_select'=>['CompanyController','select'],
  'accounts'=>['AccountController','index'], 'account_save'=>['AccountController','save'],
  'customers'=>['CustomerController','index'], 'customer_save'=>['CustomerController','save'],
  'vendors'=>['VendorController','index'], 'vendor_save'=>['VendorController','save'],
- 'invoices'=>['InvoiceController','index'], 'invoice_new'=>['InvoiceController','create'], 'invoice_edit'=>['InvoiceController','edit'], 'invoice_save'=>['InvoiceController','save'], 'invoice_update'=>['InvoiceController','update'], 'invoice_delete'=>['InvoiceController','delete'], 'invoice_pay'=>['InvoiceController','pay'],
+ 'invoices'=>['InvoiceController','index'], 'invoice_new'=>['InvoiceController','create'], 'invoice_edit'=>['InvoiceController','edit'], 'invoice_save'=>['InvoiceController','save'], 'invoice_update'=>['InvoiceController','update'], 'invoice_delete'=>['InvoiceController','delete'], 'invoice_print'=>['InvoiceController','printable'], 'invoice_pay'=>['InvoiceController','pay'],
  'bills'=>['BillController','index'], 'bill_new'=>['BillController','create'], 'bill_edit'=>['BillController','edit'], 'bill_save'=>['BillController','save'], 'bill_update'=>['BillController','update'], 'bill_delete'=>['BillController','delete'], 'bill_pay'=>['BillController','pay'],
  'journal'=>['JournalController','index'], 'journal_new'=>['JournalController','create'], 'journal_edit'=>['JournalController','edit'], 'journal_save'=>['JournalController','save'], 'journal_update'=>['JournalController','update'], 'journal_delete'=>['JournalController','delete'], 'journal_view'=>['JournalController','view'],
  'reports_pl'=>['ReportController','profitLoss'], 'reports_bs'=>['ReportController','balanceSheet'], 'reports_customer'=>['ReportController','customer'], 'reports_vendor'=>['ReportController','vendor'],
