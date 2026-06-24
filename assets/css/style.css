@@ -3,3 +3,34 @@ body{font-family:Arial,sans-serif;margin:0;background:#f6f7f9;color:#222}.app-sh
 .customer-invoice{max-width:850px;margin:0 auto;color:#111}.invoice-top{display:flex;justify-content:space-between;gap:24px;border-bottom:3px solid #2563eb;padding-bottom:20px;margin-bottom:22px}.invoice-top h1{font-size:42px;letter-spacing:.04em;margin:0;text-transform:uppercase}.invoice-company{text-align:right}.invoice-company h2{margin:0;color:#1f2937}.invoice-meta-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-bottom:24px}.invoice-box{background:#f8fafc;border:1px solid #e5e7eb;border-radius:10px;padding:16px}.invoice-box h3{margin-top:0;color:#2563eb}.invoice-box.right{text-align:right}.invoice-summary-table{margin:0}.invoice-summary-table th,.invoice-summary-table td{border:0;padding:5px 0 5px 15px;background:transparent}.invoice-lines th{background:#1f2937;color:white}.right{text-align:right!important}.invoice-totals{display:flex;justify-content:flex-end}.invoice-totals table{max-width:320px}.invoice-totals th,.invoice-totals td{font-size:16px}.invoice-balance th,.invoice-balance td{font-size:20px;font-weight:bold;border-top:2px solid #111}.invoice-footer{margin-top:34px;border-top:1px solid #e5e7eb;padding-top:16px;color:#4b5563}.invoice-print{margin-bottom:15px}@media print{.customer-invoice{max-width:none}.invoice-box{border-color:#ddd;background:white}.invoice-top{border-bottom-color:#111}.invoice-lines th{background:#eee!important;color:#111!important}.invoice-footer{position:fixed;bottom:20px;left:0;right:0}}
 
 .page-head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:16px}.button.secondary{background:#64748b}.narrow{max-width:560px}.card{background:#fff;border:1px solid #e5e7eb;border-radius:10px;padding:16px;margin-bottom:20px}.badge{display:inline-block;background:#dbeafe;color:#1d4ed8;border-radius:999px;padding:2px 8px;font-size:12px;margin-left:6px}.actions{white-space:nowrap}.actions a{margin-right:10px}.link{background:none;color:#2563eb;border:0;padding:0;text-decoration:underline;font:inherit}.link.danger{color:#b91c1c}.muted{color:#64748b;font-size:14px}
+.alert{padding:10px 12px;border-radius:8px;margin:12px 0;background:#fef2f2;border:1px solid #fecaca}.alert.error{color:#991b1b}.cardish{background:#f8fafc;border:1px solid #e5e7eb;border-radius:10px;padding:16px;margin:14px 0 22px}.inline-form,.toolbar-form{display:flex;flex-wrap:wrap;gap:10px;align-items:end;max-width:none}.compact-cards{grid-template-columns:repeat(auto-fit,minmax(170px,1fr))}.money-input{font-size:20px;font-weight:bold;max-width:160px}.danger{background:#dc2626}.small{padding:6px 9px;font-size:13px}
+/* Permissions/mobile navigation update */
+.no-sidebar{display:block}.no-sidebar main{max-width:520px;margin:40px auto}.mobile-nav-toggle{display:none;position:sticky;top:0;z-index:50;width:100%;border-radius:0;text-align:left;background:#111827}.mobile-nav-backdrop{display:none}.check-row{display:flex;grid-template-columns:none;align-items:center;gap:8px;margin:5px 0}.check-row input{width:auto}.company-checks{border:1px solid #e5e7eb;border-radius:8px;padding:10px;background:#f8fafc}.badge.super{background:#ede9fe;color:#6d28d9}
+@media(max-width:800px){
+  .mobile-nav-toggle{display:block}.app-shell{display:block}.sidebar{position:fixed;z-index:60;left:0;top:0;bottom:0;width:280px;max-width:82vw;overflow:auto;transform:translateX(-105%);transition:transform .2s ease;box-shadow:6px 0 22px #0004}.nav-open .sidebar{transform:translateX(0)}.nav-open .mobile-nav-backdrop{display:block;position:fixed;z-index:55;inset:0;background:#0007}.sidebar nav{display:grid;grid-template-columns:1fr}.app-shell main{margin:14px;border-radius:8px}.no-sidebar main{margin:24px auto}.report-header,.page-head{display:block}.page-head .button{margin-top:8px}.actions{white-space:normal}table{display:block;overflow-x:auto;white-space:nowrap}
+}
+
+/* Safari desktop nav toggle fix: desktop hides the hamburger by default and forces it hidden above mobile width. */
+.mobile-nav-toggle{
+  display:none !important;
+}
+@media screen and (min-width:801px){
+  .mobile-nav-toggle{
+    display:none !important;
+    visibility:hidden !important;
+    pointer-events:none !important;
+  }
+  body.nav-open .sidebar{
+    transform:none;
+  }
+  body.nav-open .mobile-nav-backdrop{
+    display:none !important;
+  }
+}
+@media screen and (max-width:800px){
+  .mobile-nav-toggle{
+    display:block !important;
+    visibility:visible !important;
+    pointer-events:auto !important;
+  }
+}
