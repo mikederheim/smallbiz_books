@@ -1,6 +1,6 @@
 <?php
 return [
-    'app_name' => 'SmallBiz Books',
+    'app_name' => 'Smallbooks',
     'base_url' => '', // e.g. https://example.com/books/public, no trailing slash
     'db' => [
         'host' => 'localhost',

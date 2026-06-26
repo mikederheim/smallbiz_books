@@ -1,17 +1,18 @@
-SmallBiz Books - Safari Desktop Menu Button Fix
+Smallbooks visual refresh update
 
-This is a changed-files-only update.
-
-Files changed:
-- assets/css/style.css
+No MySQL changes are required.
 
 Install:
-1. Back up your current site files.
-2. Copy the included assets/css/style.css over your existing file.
-3. No MySQL changes are required.
-4. In Safari, hard refresh the page or clear cached website data if the old CSS remains visible.
+1. Back up your existing Smallbooks files.
+2. Copy the app/ and assets/ folders from this update over your existing installation.
+3. In Safari, Chrome, or mobile browsers, hard-refresh the page after copying files.
+   Safari may otherwise keep the old CSS cached.
 
-What changed:
-- The mobile menu button is now explicitly hidden by default.
-- It is forced hidden at desktop widths using a min-width media query.
-- It is only shown at mobile widths of 800px or below.
+Changed:
+- Smaller top-left Smallbooks logo.
+- Darker, cleaner sidebar closer to the mockup.
+- White top header bar with company and logged-in user info.
+- Cleaner Inter font stack loaded from Google Fonts with system fallback.
+- More polished dashboard cards, tables, buttons, forms, and report headers.
+- Dashboard welcome header closer to the mockup.
+- Mobile menu behavior preserved.

@@ -1,7 +1,7 @@
 <?php
 return [
-    'app_name' => 'SmallBiz Books',
-    'base_url' => 'http://www.mivent.com/smallbiz_books/public/',
+    'app_name' => 'MiniBooks',
+    'base_url' => 'http://www.minibooks.io/',
     'db' => [
         'host' => 'localhost',
         'name' => 'smallbizbooks',

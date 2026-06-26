@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 190" role="img" aria-labelledby="title desc">
+  <title id="title">Smallbooks Logo</title>
+  <desc id="desc">An open book above the word Smallbooks.</desc>
+  <defs>
+    <linearGradient id="page" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#eaf4ff"/>
+    </linearGradient>
+  </defs>
+  <g fill="none" stroke="#1f5fa8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M130 43c-23-23-54-28-88-18v94c34-10 65-5 88 18z" fill="url(#page)" stroke-width="8"/>
+    <path d="M130 43c23-23 54-28 88-18v94c-34-10-65-5-88 18z" fill="url(#page)" stroke-width="8"/>
+    <path d="M130 43v94" stroke-width="7"/>
+    <path d="M58 44c21-4 39 1 55 13M58 68c21-4 39 1 55 13M147 57c16-12 34-17 55-13M147 81c16-12 34-17 55-13" stroke="#3b82f6" stroke-width="5" opacity=".7"/>
+  </g>
+  <text x="130" y="173" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="31" font-weight="700" fill="#111827">Smallbooks</text>
+</svg>

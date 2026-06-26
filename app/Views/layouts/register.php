@@ -9,6 +9,7 @@
 </head>
 <body>
 <main class="auth">
+  <div class="login-logo"><img src="../assets/img/smallbooks-logo.svg" alt="Smallbooks logo"></div>
   <h1><span class="mdi mdi-account-plus icon-blue"></span> <?= !empty($firstUser) ? 'Create First User' : 'Create User' ?></h1>
   <?php if(empty($firstUser)): ?>
     <p class="muted">Only logged-in users can create additional users.</p>
